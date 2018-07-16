@@ -93,10 +93,8 @@ const Tree = (function(){
         for(let i = 0; i < N; i ++){
             let fromPoint = points[i];
             let toPoint   = points[i + 1];
-            console.log(points[i]);
 
             let node = self.findNode(fromPoint);
-            console.log(node);
             if(!node){
                 // Path dosn't exists
                 totalPrice = -1;

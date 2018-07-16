@@ -42,7 +42,7 @@ class Case1 extends Component {
 
     handleAddStop () {
         let newPoint = this.state.points;
-        newPoint.push({name: 'A'});
+        newPoint.push({name: data[0].from});
         this.setState({points: newPoint});
         this.countPrice();
     }

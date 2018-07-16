@@ -9,18 +9,23 @@ class Case3 extends Component {
 
         this.state={
             nodes: [],
-            points: [{name: 'A'},{name: 'B'}],
+            points: [],
+            from: data[0].from,
+            to: data[0].from,
+            way: [],
+            visited: [],
             price: null
         };
 
         this.treeBuilder = this.treeBuilder.bind(this);
-        this.handleOnChange = this.handleOnChange.bind(this);
+        this.handleOnChangeFrom = this.handleOnChangeFrom.bind(this);
+        this.handleOnChangeTo = this.handleOnChangeTo.bind(this);
         this.countPrice = this.countPrice.bind(this);
     }
 
     componentDidMount() {
         this.treeBuilder();
-        Main;
+        //Main;
     }
 
     treeBuilder () {
@@ -29,15 +34,19 @@ class Case3 extends Component {
             if ("undefined" === typeof(nodes[item.from])){
                 nodes[item.from] = {};
             }
-            nodes[item.from][item.to]=item.price;
+            nodes[item.from][item.to]={price: item.price, visited: false, way: 0};
         });
         this.setState({nodes});
     };
 
-    handleOnChange (e) {
-        let points = this.state.points;
-        points[e.target.id] = {name:e.target.value};
-        this.countPrice();
+    handleOnChangeFrom (e) {
+        this.setState({from:e.target.value});
+        this.countPath(e.target.value, this.state.to);
+    }
+
+    handleOnChangeTo (e) {
+        this.setState({to:e.target.value});
+        this.countPath(this.state.from, e.target.value);
     }
 
     countPrice () {
@@ -54,24 +63,49 @@ class Case3 extends Component {
         });
     }
 
+    count(node) {
+        const {visited, way, nodes} = this.state;
+        console.log(visited.node);
+        if (visited[node]) {
+            return way[node]
+        };
+
+        let sum = 0;
+        // Object.keys(nodes[node]).map(key => {
+        //     sum+= this.count(key);
+        // });
+        way[node] = sum;
+        visited[node] = true;
+        console.log(way,visited);
+        return sum;
+    }
+
+    countPath(start, end) {
+        const {way, visited} = this.state;
+        this.setState({way: [],visited: []});
+        way[start] = 1;
+        visited[start] = true;
+        return this.count(end);
+    }
+
     render() {
         return (
             <div>
-                {/*<select onChange={this.handleOnChange}>*/}
-                    {/*{*/}
-                        {/*Object.keys(this.props.nodes).map((key, index) => (*/}
-                            {/*<option value={key} key={index}>{key}</option>*/}
-                        {/*))*/}
-                    {/*}*/}
-                {/*</select>*/}
+                <select onChange={this.handleOnChangeFrom} value={this.state.from}>
+                    {
+                        Object.keys(this.state.nodes).map((key, index) => (
+                            <option value={key} key={index}>{key}</option>
+                        ))
+                    }
+                </select>
 
-                {/*<select onChange={this.handleOnChange}>*/}
-                    {/*{*/}
-                        {/*Object.keys(this.props.nodes).map((key, index) => (*/}
-                            {/*<option value={key} key={index}>{key}</option>*/}
-                        {/*))*/}
-                    {/*}*/}
-                {/*</select>*/}
+                <select onChange={this.handleOnChangeTo} value={this.state.to}>
+                    {
+                        Object.keys(this.state.nodes).map((key, index) => (
+                            <option value={key} key={index}>{key}</option>
+                        ))
+                    }
+                </select>
 
                 {
                     this.state.price
