@@ -1,21 +1,51 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Case1 from "./Case1";
+import Case2 from "./Case2";
+import Case3 from "./Case3";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            page: 'Case1'
+        }
+
+        this.renderPage = this.renderPage.bind(this);
+        this.handlePageSwitch = this.handlePageSwitch.bind(this);
+    }
+
+    renderPage() {
+        switch(this.state.page) {
+            case 'Case1':
+                return <Case1 />;
+            case 'Case2':
+                return <Case2 />;
+            case 'Case3':
+                return <Case3 />
+        }
+    }
+
+    handlePageSwitch(e){
+        this.setState({
+            page: e.target.value
+        })
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <header className="App-header">
+
+                    <button value={'Case1'} onClick={this.handlePageSwitch}>Case1</button>
+                    <button value={'Case2'} onClick={this.handlePageSwitch}>Case2</button>
+                    <button value={'Case3'} onClick={this.handlePageSwitch}>Case3</button>
+
+                </header>
+                {this.renderPage()}
+            </div>
+        );
+    }
 }
 
 export default App;
