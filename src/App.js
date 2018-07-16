@@ -17,12 +17,12 @@ class App extends Component {
 
     renderPage() {
         switch(this.state.page) {
-            case 'Case1':
-                return <Case1 />;
             case 'Case2':
                 return <Case2 />;
             case 'Case3':
-                return <Case3 />
+                return <Case3 />;
+            default:
+                return <Case1 />;
         }
     }
 
@@ -38,7 +38,7 @@ class App extends Component {
                 <header className="App-header">
 
                     <button value={'Case1'} onClick={this.handlePageSwitch}>Case1</button>
-                    <button value={'Case2'} onClick={this.handlePageSwitch}>Case2</button>
+                    {/*<button value={'Case2'} onClick={this.handlePageSwitch}>Case2</button>*/}
                     <button value={'Case3'} onClick={this.handlePageSwitch}>Case3</button>
 
                 </header>

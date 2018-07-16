@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import data from './routes.data';
+import Main from './main';
 
 class Case3 extends Component {
     constructor(props) {
@@ -12,18 +13,19 @@ class Case3 extends Component {
             price: null
         };
 
-        this.Tree = this.Tree.bind(this);
+        this.treeBuilder = this.treeBuilder.bind(this);
         this.handleOnChange = this.handleOnChange.bind(this);
         this.countPrice = this.countPrice.bind(this);
     }
 
     componentDidMount() {
-        this.Tree();
+        this.treeBuilder();
+        Main;
     }
 
-    Tree () {
+    treeBuilder () {
         let nodes = [];
-        data.routes.forEach((item) => {
+        data.forEach((item) => {
             if ("undefined" === typeof(nodes[item.from])){
                 nodes[item.from] = {};
             }

@@ -9,7 +9,7 @@ class Case1 extends Component {
 
         this.state={
             nodes: [],
-            points: [{name: data.routes[0].from}],
+            points: [{name: data[0].from}],
             price: null
         };
 
@@ -25,7 +25,7 @@ class Case1 extends Component {
 
     Tree () {
         let nodes = [];
-        data.routes.forEach((item) => {
+        data.forEach((item) => {
             if ("undefined" === typeof(nodes[item.from])){
                 nodes[item.from] = {};
             }
