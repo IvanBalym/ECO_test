@@ -55,22 +55,24 @@ class Case1 extends Component {
 
     render() {
         return (
-            <div>
-                <div>
+            <div className='content'>
+                <div className='selects'>
                     {
                         this.state.points.map((item, index)=>(
-                            <HandleAddStop
-                                key={index}
-                                handleOnChange={this.handleOnChange}
-                                nodes={this.state.nodes}
-                                point={index}
-                                value={item.name}
-                            />
+                            <div key={index}>
+                                <HandleAddStop
+                                    handleOnChange={this.handleOnChange}
+                                    nodes={this.state.nodes}
+                                    point={index}
+                                    value={item.name}
+                                />
+                                {index+1 < this.state.points.length ? <i className="right" /> :''}
+                            </div>
                         ))
                     }
                 </div>
 
-                <button onClick={this.handleAddStop}>Add stop</button>
+                <button className='buttonAdd' onClick={this.handleAddStop}>Add point +</button>
                 {
                     this.state.price
                         ?
@@ -78,7 +80,7 @@ class Case1 extends Component {
                             this.state.points.map((item,index)=><span key={index}>{item.name} </span>)
                         } will be {this.state.price}</h3>
                         :
-                        <h3>No such route</h3>
+                        <h3 className='warning'>No such route</h3>
                 }
             </div>
         );

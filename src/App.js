@@ -37,9 +37,9 @@ class App extends Component {
             <div className="App">
                 <header className="App-header">
 
-                    <button value={'Case1'} onClick={this.handlePageSwitch}>Case1</button>
+                    <button className='button' value={'Case1'} onClick={this.handlePageSwitch}>Case1</button>
                     {/*<button value={'Case2'} onClick={this.handlePageSwitch}>Case2</button>*/}
-                    <button value={'Case3'} onClick={this.handlePageSwitch}>Case3</button>
+                    <button className='button' value={'Case3'} onClick={this.handlePageSwitch}>Case3</button>
 
                 </header>
                 {this.renderPage()}

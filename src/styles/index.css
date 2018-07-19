@@ -3,3 +3,91 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.content {
+    margin-top: 35px;
+}
+
+.warning {
+    color: #ce5554;
+}
+
+.selects {
+    display: flex;
+    justify-content: center;
+}
+
+i {
+    margin: 0 5px 0 2px;
+    border: solid #232322;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+body .button {
+  background: #428BCA;
+  color: #fff;
+  font-size: 20px;
+  height: 60px;
+  width: 150px;
+  line-height: 60px;
+  margin: 25px 25px;
+  text-align: center;
+  border: 0;
+  transition: all 0.3s ease 0s;
+}
+
+.button:hover {
+    background: #3071A9
+}
+
+.button:active {
+    background: #174b7d
+}
+
+body .buttonAdd {
+  background: #7dca84;
+  color: #fff;
+  font-size: 20px;
+  height: 40px;
+  width: 150px;
+  margin: 25px 25px;
+  text-align: center;
+  border: 0;
+  transition: all 0.3s ease 0s;
+}
+
+.buttonAdd:hover {
+  background: #65a46b
+}
+
+.buttonAdd:active {
+    background: #4a784e
+}
+
+body .select {
+    background: #232322;
+    color: #fff;
+    font-size: 15px;
+    height: 40px;
+    width: 50px;
+    padding: 6px;
+    margin: 5px;
+    text-align: center;
+    border: 0;
+    transition: all 0.3s ease 0s;
+}
+
+.select:hover {
+    background: #3071A9
+}
+
+.select:active {
+    background: #174b7d
+}

@@ -23,8 +23,10 @@ class Case3 extends Component {
 
     componentDidMount() {
         const graph = createGraph();
+        const price = minCost(graph, this.state.from ,this.state.to);
         this.setState({
-            nodes: graph
+            nodes: graph,
+            price
         });
     }
 
@@ -48,8 +50,8 @@ class Case3 extends Component {
 
     render() {
         return (
-            <div>
-                <select onChange={this.handleOnChangeFrom} value={this.state.from}>
+            <div className='content'>
+                <select className='select' onChange={this.handleOnChangeFrom} value={this.state.from}>
                     {
                         Object.keys(this.state.nodes).map((key, index) => (
                             <option value={key} key={index}>{key}</option>
@@ -57,7 +59,7 @@ class Case3 extends Component {
                     }
                 </select>
 
-                <select onChange={this.handleOnChangeTo} value={this.state.to}>
+                <select className='select' onChange={this.handleOnChangeTo} value={this.state.to}>
                     {
                         Object.keys(this.state.nodes).map((key, index) => (
                             <option value={key} key={index}>{key}</option>
@@ -70,7 +72,7 @@ class Case3 extends Component {
                         ?
                         <h3>The price for {this.state.from} -> {this.state.to} will be {this.state.price}</h3>
                         :
-                        <h3>No such route</h3>
+                        <h3 className='warning'>No such route</h3>
                 }
             </div>
         );
