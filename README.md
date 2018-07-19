@@ -1,5 +1,8 @@
 Read me
 
+GetStarted:
+write in terminal 'yarn start' or 'npm start' to lunch;
+
 A ​ ​ directed​ ​ graph​ ​ where​ ​ a ​ ​ node​ ​ represents​ ​ a ​ ​ town​ ​ and​ ​ an​ ​ edge​ ​ represents​ ​ a ​ ​ route
 between​ ​ two​ ​ towns.​ ​ The​ ​ weighting​ ​ of​ ​ the​ ​ edge​ ​ represent​ ​ the​ ​ delivery​ ​ cost​ ​ between​ ​ two
 towns.​ ​ the​ ​ towns​ ​ are​ ​ named​ ​ using​ ​ the​ ​ first​ ​ letters​ ​ of​ ​ the​ ​ alphabet.​ ​ a ​ ​ route​ ​ between​ ​ two​ ​ town
