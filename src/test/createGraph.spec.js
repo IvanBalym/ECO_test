@@ -1,4 +1,4 @@
-const createGraph = require('../src/createGraph');
+import createGraph from '../logic/createGraph';
 
 test('should return empty graph from empty points list', () => {
   expect(createGraph([])).toEqual({});

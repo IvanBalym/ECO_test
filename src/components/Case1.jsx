@@ -46,7 +46,7 @@ class Case1 extends Component {
         for(let i=0; points.length-1 > i; i++) {
             let from = points[i].name,
                 to = points[i+1].name;
-            result += parseInt(this.state.nodes[from].paths[to]);
+            result += parseInt(this.state.nodes[from].paths[to], 10);
         }
         this.setState({
             price: result

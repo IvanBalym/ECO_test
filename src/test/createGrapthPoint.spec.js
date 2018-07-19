@@ -1,4 +1,4 @@
-const createGraphPoint = require('../src/createGraphPoint');
+import createGraphPoint from '../logic/createGraphPoint';
 
 describe('createGraphPoint', () => {
   test('should return null without input given', () => {
