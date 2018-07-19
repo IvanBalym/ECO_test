@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import './App.css';
-import Case1 from "./Case1";
-import Case2 from "./Case2";
-import Case3 from "./Case3";
+import './styles/App.css';
+import Case1 from "./components/Case1";
+import Case2 from "./components/Case2";
+import Case3 from "./components/Case3";
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: 'Case1'
+            page: 'Case3'
         }
 
         this.renderPage = this.renderPage.bind(this);
@@ -19,10 +19,10 @@ class App extends Component {
         switch(this.state.page) {
             case 'Case2':
                 return <Case2 />;
-            case 'Case3':
-                return <Case3 />;
-            default:
+            case 'Case1':
                 return <Case1 />;
+            default:
+                return <Case3 />;
         }
     }
 

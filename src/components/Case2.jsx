@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import './App.css';
-import data from './routes.data';
+import '../styles/App.css';
+import data from './../routes.data';
 import HandleAddStop from './RoutePoints';
 
-class Case1 extends Component {
+class Case2 extends Component {
     constructor(props) {
         super(props);
 
         this.state={
             nodes: [],
-            points: [{name: data[0].from}],
+            points: [{name: 'A'},{name: 'B'}],
             price: null
         };
 
@@ -25,7 +25,7 @@ class Case1 extends Component {
 
     Tree () {
         let nodes = [];
-        data.forEach((item) => {
+        data.routes.forEach((item) => {
             if ("undefined" === typeof(nodes[item.from])){
                 nodes[item.from] = {};
             }
@@ -42,9 +42,8 @@ class Case1 extends Component {
 
     handleAddStop () {
         let newPoint = this.state.points;
-        newPoint.push({name: data[0].from});
+        newPoint.push({name: 'A'});
         this.setState({points: newPoint});
-        this.countPrice();
     }
 
     countPrice () {
@@ -79,12 +78,11 @@ class Case1 extends Component {
                 </div>
 
                 <button onClick={this.handleAddStop}>Add stop</button>
+
                 {
                     this.state.price
                         ?
-                        <h3>The price for {
-                            this.state.points.map((item,index)=><span key={index}>{item.name} </span>)
-                        } will be {this.state.price}</h3>
+                        <h3>The price for {this.state.points.map(item=>item.name)} will be {this.state.price}</h3>
                         :
                         <h3>No such route</h3>
                 }
@@ -93,4 +91,4 @@ class Case1 extends Component {
     }
 }
 
-export default Case1;
+export default Case2;

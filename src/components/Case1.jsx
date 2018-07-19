@@ -1,38 +1,30 @@
 import React, { Component } from 'react';
-import './App.css';
-import data from './routes.data';
+import '../styles/App.css';
+import data from './../routes.data';
 import HandleAddStop from './RoutePoints';
+import createGraph from './../logic/createGraph';
 
-class Case2 extends Component {
+class Case1 extends Component {
     constructor(props) {
         super(props);
 
         this.state={
             nodes: [],
-            points: [{name: 'A'},{name: 'B'}],
+            points: [{name: data[0]}],
             price: null
         };
 
-        this.Tree = this.Tree.bind(this);
         this.handleOnChange = this.handleOnChange.bind(this);
         this.handleAddStop = this.handleAddStop.bind(this);
         this.countPrice = this.countPrice.bind(this);
     }
 
     componentDidMount() {
-        this.Tree();
-    }
-
-    Tree () {
-        let nodes = [];
-        data.routes.forEach((item) => {
-            if ("undefined" === typeof(nodes[item.from])){
-                nodes[item.from] = {};
-            }
-            nodes[item.from][item.to]=item.price;
+        const graph = createGraph();
+        this.setState({
+            nodes: graph
         });
-        this.setState({nodes});
-    };
+    }
 
     handleOnChange (e) {
         let points = this.state.points;
@@ -42,8 +34,9 @@ class Case2 extends Component {
 
     handleAddStop () {
         let newPoint = this.state.points;
-        newPoint.push({name: 'A'});
+        newPoint.push({name: Object.keys(this.state.nodes)[0]});
         this.setState({points: newPoint});
+        this.countPrice();
     }
 
     countPrice () {
@@ -53,7 +46,7 @@ class Case2 extends Component {
         for(let i=0; points.length-1 > i; i++) {
             let from = points[i].name,
                 to = points[i+1].name;
-            result += parseInt(this.state.nodes[from][to]);
+            result += parseInt(this.state.nodes[from].paths[to]);
         }
         this.setState({
             price: result
@@ -78,11 +71,12 @@ class Case2 extends Component {
                 </div>
 
                 <button onClick={this.handleAddStop}>Add stop</button>
-
                 {
                     this.state.price
                         ?
-                        <h3>The price for {this.state.points.map(item=>item.name)} will be {this.state.price}</h3>
+                        <h3>The price for {
+                            this.state.points.map((item,index)=><span key={index}>{item.name} </span>)
+                        } will be {this.state.price}</h3>
                         :
                         <h3>No such route</h3>
                 }
@@ -91,4 +85,4 @@ class Case2 extends Component {
     }
 }
 
-export default Case2;
+export default Case1;
